@@ -1,76 +1,98 @@
 # Entrada de datos
 print ("Ingresa tu nombre completo")
-nombre = int(input())
+nombre = input()
 print ("Ingresa RFC")
-RFC = int(input())
+RFC = input()
 print ("Ingresa No. de empleado")
 Num empleado = int(input())
-print ("Ingresa el sueldo por hora")
-sueldohora = int(input())
-print ("Ingresa las horas trabajadas por semana")
-hrstrabajadas = int(input())
-print ("Ingresa el numero de faltas por semana")
+print ("Ingresa el salario por quincena")
+sueldoquincena = float(input())
+print ("Ingresa las horas trabajadas por quincena")
+hrsmes = int(input())
+print ("Ingresa los dias trabajados por quincena")
+diasquincena = int(input())
+print ("Ingresa el numero de dias de inasistencia por incapacidad")
+diasincapacidad = int(input())
+print ("Ingresa el numero de faltas de esta quincena")
 faltas = int(input())
-print ("Ingresa el numero de retardos por semana")
+print ("Ingresa el numero de retardos de esta quincena")
 retardos = int(input())
 
-# Operaciones o calculos matematicos
+# Operaciones o calculos matematicos:
 
-sueldodia = sueldohora * 8
+#absentismo con/sin justificacion ? 
+if (faltas == 1):
+    faltasinjusti = (sueldodia * 0.83)*1 + (sueldodia * 5)
+elif (faltas == 2):
+    faltasinjusti = (sueldodia * 0.83)*2 + (sueldodia * 4)
+ elif (faltas == 3):
+    faltasinjusti = (sueldodia * 0.83)*3 + (sueldodia * 3)
+ else:
+    print ("Incumplimiento al contrato")
 
-sueldosemanal = sueldodia * 7
+
+sueldosemanal = sueldoquincena / 2
+sueldodia = sueldosemanal / 7
+
+aguinaldo = (sueldodia * 15) / 365
+primavacacional = sueldodia * diasañostrabajados / 365
+SBC = sueldodia + aguinaldo + primavacacional
+
+UMA = 89.62 
+cuotafija = (UMA * (UMA*3)) * diasquincena * diasincapacidad)
 
 
-if (faltas > 0 and = 1):
+if SBC > (UMA *3):
+excsbcpatron = (((UMA * 3)  - SBC) * 1.10%)*(diasquincena- diasincapacidad)
+else: #si quiero especificar una condicion para cuando el sbc sea mayor
+excsbcpatron = 0 
+excsbctrabaj = (((UMA * 3)  - SBC) * .40%)*(diasquincena- diasincapacidad)
 
-    faltas = (sueldosemanal / 5) * 4
+#como puedo redondear a dos decimales?
+prestacionesdineropat = (SBC*.70)* (diasquincena - diasincapacidad)
 
-elif (faltas = 2):
+prestacionesdinerotrab = (SBC*.25)* (diasquincena - diasincapacidad)
+
+# fundament Art. 25 LSS
+gastosmedpensionadospatr= (SBC *1.050%) * (diasquincena - diasincapacidad)
+
+gastosmedpensionadostrab = (SBC *0.375%) * (diasquincena - diasincapacidad)
+
+# fundament Art. 112 - 150 LSS
+
+diasnetos =diasquincena - faltas - diasincapacidad
+invalidezvidapatr =SBC * 1.750% * diasnetos
+invalidezvidatrab =SBC * 1.13065% * diasnetos
+
+# fundament Art. 73 LSS RIESGO DE TRABAJO
+
+RT = (SBC * 1.13065%) *diasnetos
+
+# Art. 11 LSS 
+guarderias = SBC * 1% * diasnetos
+
+totalcuotaspatron = cuotafija + excsbcpatron + prestacionesdineropat + gastosmedpensionadospatr +invalidezvidapatr+RT+guarderias
+totalcuotastrabaj = excsbctrabaj + prestacionesdinerotrab + gastosmedpensionadostrab + invalidezvidatrab 
+
+
+sueldodia = sueldoquincena/15
+sueldohora = sueldodia / 8  #si quiero un empleado trabaja 4 hrs extras en un dia ??
+if (hrsquincena > 96 and hrsquincena <= 105):   
+hrsextras2 = hrsquincena - 96
+hrsextrasdobles = hrsextras2 * sueldohora * 2
+elif (hrsquincena > 105):
+hrsextras3 = hrsquincena - 105
+hrsextrastriples = hrsextras3 * sueldohora * 3
+
+
+
+        
+SM = 141.7    #puedo hacer una funcion para que se agregue una tabla con la informacion del salario minimo?
+if sueldodia > SM:
+    ingresomensual= sueldoquincena + (hrsextrasdobles + hrsextrastriples * .50)
+    else:
+        ingresomensual= sueldoquincena + 0
     
-    faltas = (sueldosemanal / 5) * 3
-
- elif (faltas = 3):
-
-    faltas = (sueldosemanal / 5) * 3 
-
- else 
-    print ("Solicitar justificacion en RH")
-
-
-
-if (hrstrabajadas > 40 and <= 49):
-    print("Hay horas extras")
-
-hrsextras = hrstrabajadas - 40:
-
-sueldohrextra = hrsextras * sueldohora * 2:
-
-importe (sueldohora * (hrstrabajadas + hrsextra))
-
-
-if(retardos < = 0):
-            bono = importe + 500
-            print ("Felicitaciones obtuviste bono de puntualidad")
-
-        retardos = sueldohora
-
-        elif(retardos > = 1 and retardos < = 5):
-            descuento = retardos * .50
-        
-        elif(retardos > = 6 and retardos < = 10):
-            descuento= 250 + ((retardos-5) * 75)
-        
-        elif(retardos > = 11 and retardos < = 15):
-            descuento= 625 + ((retardos-10) * 100)
-       
-       
-
-        ingresosobt = (importe + hrsextra) - descuento
-        
-         fondoahorro = sueldomensual * 8%
-         valesdespensa = sueldomensual * 10%
-         ingresomensual = (ingresosobt * 30) + valesdespensa - fondoahorro
-        
         if (ingresomensual > 0.01 and < 578.52):
             
             excedente = ingresomensual - 0.01
@@ -128,7 +150,7 @@ if(retardos < = 0):
 
             ISR = impuestomarginal + 3880.44
 
-         elif (ingresomensual > 38177.70 and < 72887.50):
+            elif (ingresomensual > 38177.70 and < 72887.50):
             
             excedente = ingresomensual - 38177.70
 
@@ -161,7 +183,15 @@ if(retardos < = 0):
 
             ISR = impuestomarginal + 91435.02
 
-        
+        if(retardos == 0):
+    bono = sueldoquincena + 500
+else:
+    print("No se obtuvo bono de puntualidad")       
+
+         fondoahorro = sueldoquincena * .8%
+         valesdespensa = sueldoquincena * .10% #puedo agregar una funcion para que en quincena de fin de mes se agregue este plus?
+      
+
     # Imprimir o mostrar en pantalla
         print("Importe:"+ importe)
         print("Bono de puntualidad:"+ bono)

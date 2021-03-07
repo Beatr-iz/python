@@ -4,7 +4,7 @@ numero2 = 2
  # Entrada de datos
 print ("Ingresa numero 1")
 numero1 = int(input())
-Print ("Ingresa numero 2")
+print ("Ingresa numero 2")
 numero2 = int(input())
 
 # Operaciones o calculos matematicos

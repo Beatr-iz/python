@@ -2,19 +2,18 @@
  
  # Entrada de datos
 print ("Ingresa tu primer calificacion")
-numero1 = int(input())
+numero1 = float(input())
 print ("Ingresa tu segunda calificacion")
-numero2 = int(input())
+numero2 = float(input())
 print ("Ingresa tu tercera calificacion")
-numero3 = int(input())
+numero3 = float(input())
 
 # Operaciones o calculos matematicos
-suma = numero1 + numero2 + numero3
-promedio = suma / 3
+suma = (numero1 + numero2 + numero3)
+promedio = (suma / 3)
 
 # Imprimir o mostrar en pantalla
-print(f"El promedio = {promedio}")
-
+print("El promedio es" + promedio)
 
 if (promedio <5):
     print("Reprobado")

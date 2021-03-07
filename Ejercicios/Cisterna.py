@@ -1,21 +1,21 @@
 
  # Entrada de datos
 print ("Ingresa el numero de litros de agua")
-numero1 = int(input())
-print ("Ingresa tu segunda calificacion")
-numero2 = int(input())
-print ("Ingresa tu tercera calificacion")
-numero3 = int(input())
+nivelagua = int(input())
 
 # Operaciones o calculos matematicos
-suma = numero1 + numero2 + numero3
-promedio = suma / 3
 
-# Imprimir o mostrar en pantalla
-print(f"El promedio = {promedio}")
-
-
-if (promedio <5):
-    print("Reprobado")
-else:
-    print("Aprobado")
+if (nivelagua == 0):
+print("Hay fuga en la cisterna")
+elif(nivelagua > 0 and < 2):
+print("Encender bomba de agua")
+elif(nivelagua > 2 and < 4):
+print("Acelerar bomba de agua")
+elif(nivelagua > 4 and < 6):
+print("Bomba de agua trabajando")
+elif(nivelagua > 6 and < 8):
+print("Desacelerar bomba de agua")
+elif(nivelagua > 8 and < 10):
+print("Desacelerar bomba de agua")
+else :
+print("Desbordamiento de agua")
